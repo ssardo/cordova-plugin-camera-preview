@@ -79,10 +79,16 @@ var disableAllowBackup = (function () {
 })();
 
 module.exports = function (ctx) {
-    var Q = ctx.q;
-    fs = ctx.fs;
-    path = ctx.path;
-    elementtree = ctx.elementtree;
+  var deferral;
+  var q = require("q");
+  var fs = require("fs");
+  var path = require("path");
+  var elementtree = require("elementtree");
+  
+    var Q = q;
+    fs = fs;
+    path = path;
+    elementtree = elementtree;
 
     deferral = Q.defer();
 
