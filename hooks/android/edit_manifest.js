@@ -1,6 +1,6 @@
 // Global vars
 var deferral, fs, elementtree, path;
-var q = request("q");
+var q = require("q");
 var fs = require("fs");
 var path = require("path");
 var elementtree = require("elementtree");
