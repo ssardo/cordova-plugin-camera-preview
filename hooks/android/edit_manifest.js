@@ -1,9 +1,16 @@
 // Global vars
 var deferral, fs, elementtree, path;
-var q = require("q");
+
 var fs = require("fs");
 var path = require("path");
 var elementtree = require("elementtree");
+
+function isCordovaAbove(context, version) {
+  var cordovaVersion = context.opts.cordova.version;
+  console.log(cordovaVersion);
+  var sp = cordovaVersion.split('.');
+  return parseInt(sp[0]) >= version;
+}
 
 var disableAllowBackup = (function () {
 
@@ -79,18 +86,19 @@ var disableAllowBackup = (function () {
 })();
 
 module.exports = function (ctx) {
-  var deferral;
-  var q = require("q");
+  var cordovaAbove8 = utils.isCordovaAbove(ctx, 8);
+  
+  if (cordovaAbove8) {
+    var Q = require("q");
+  } else {
+    var Q = requireCordovaModule("q");
+  }
+  
   var fs = require("fs");
   var path = require("path");
   var elementtree = require("elementtree");
   
-    var Q = q;
-    fs = fs;
-    path = path;
-    elementtree = elementtree;
-
-    deferral = Q.defer();
+    var deferral = Q.defer();
 
     try {
         disableAllowBackup.apply(ctx);
