@@ -11,13 +11,11 @@ module.exports = function (ctx) {
     var path = require("path");
     var elementtree = require("elementtree");
   } else {
-    var Q = requireCordovaModule("q");  
-    var fs = requireCordovaModule("fs");
-    var path = requireCordovaModule("path"); 
-    var elementtree = requireCordovaModule("elementtree");
+    var Q = ctx.requireCordovaModule("q");  
+    var fs = ctx.requireCordovaModule("fs");
+    var path = ctx.requireCordovaModule("path"); 
+    var elementtree = ctx.requireCordovaModule("elementtree");
   }
-
-  var cordovaAbove8 = utils.isCordovaAbove(ctx, 8);
   deferral = Q.defer();
 
   var disableAllowBackup = (function () {
