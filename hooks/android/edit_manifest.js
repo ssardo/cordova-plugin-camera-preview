@@ -1,7 +1,7 @@
 // Global vars
 var deferral, fs, elementtree, path;
 var utils = require('./utilities');
-var cordovaAbove8 = utils.isCordovaAbove(ctx, 8);
+var cordovaAbove8 = utils.isCordovaAbove(this, 8);
 if (cordovaAbove8){
   var fs = require("fs");
   var path = require("path");
